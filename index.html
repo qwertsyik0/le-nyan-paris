@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Le Nyan Paris</title>
-  <meta name="description" content="Le Nyan Paris — ролевая история в наполеоновском Париже: дворец, суд, газета, слухи, полиция, армия и подполье." />
-  <meta name="theme-color" content="#4b1020" />
+  <meta name="description" content="Le Nyan Paris — городская страница события: указы, роли, газета, правила и вход в Париж 1808 года." />
+  <meta name="theme-color" content="#ead9ad" />
   <meta property="og:title" content="Le Nyan Paris" />
-  <meta property="og:description" content="Вступите в ролевую историю наполеоновского Парижа. Дворец, указы, газеты, интриги и улицы города." />
+  <meta property="og:description" content="Париж 1808 года: указы, роли, городская газета, правила и вход через Nyan Wallet." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./assets/preview.svg" />
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
@@ -21,9 +21,10 @@
         <span class="brand-text">Le Nyan Paris</span>
       </a>
       <nav class="nav" aria-label="разделы сайта">
-        <a href="#about">город</a>
-        <a href="#roles">роли</a>
-        <a href="#rules">правила</a>
+        <a href="#decrees">указы</a>
+        <a href="#registry">роли</a>
+        <a href="#gazette">газета</a>
+        <a href="#newcomer">новичку</a>
         <a href="#join">вступить</a>
       </nav>
     </header>
@@ -33,119 +34,139 @@
         <div class="hero-copy reveal">
           <p class="eyebrow">Париж, 1808 год</p>
           <h1 id="hero-title">Le Nyan Paris</h1>
-          <p class="hero-lead">Ролевая история в столице Империи: дворец, суд, газета, полиция, армия, рынок и подполье живут в одном городе, где каждый слух может стать делом.</p>
+          <p class="hero-lead">Городская страница события: здесь лежат указы, список принятых ролей, газета, слухи и короткая памятка для тех, кто только входит в Париж.</p>
           <div class="hero-actions" aria-label="основные действия">
             <a class="button button-primary" href="https://t.me/nyancash_bot?startapp=paris" target="_blank" rel="noopener">Вступить в Париж</a>
-            <a class="button button-ghost" href="#rules">Прочитать правила</a>
+            <a class="button button-ghost" href="#registry">Смотреть роли</a>
           </div>
         </div>
 
-        <div class="hero-card reveal" aria-label="императорский указ">
-          <div class="document-card">
-            <div class="seal" aria-hidden="true">N</div>
-            <p class="doc-kicker">Императорский архив</p>
-            <h2>город открыт для новых имен</h2>
-            <p>Анкеты проходят проверку, роли выдаются вручную. Ваш персонаж начинает с места в городе, а дальше его судьбу решают действия, связи и осторожность.</p>
-            <span class="doc-sign">Императорская канцелярия</span>
+        <aside class="notice-board reveal" aria-label="главная доска">
+          <div class="board-pin" aria-hidden="true"></div>
+          <p class="notice-date">канцелярия · 27 сентября 1808</p>
+          <h2>городская доска</h2>
+          <p>Быстрые разделы для игроков и администрации. Эту доску можно обновлять: добавлять новые указы, выпуск газеты, роли и заметки для новичков.</p>
+          <div class="quick-actions" aria-label="быстрые кнопки">
+            <a href="#decrees" class="quick-button" data-scroll-target="decrees"><span>01</span>указы</a>
+            <a href="#registry" class="quick-button" data-scroll-target="registry"><span>02</span>роли</a>
+            <a href="#gazette" class="quick-button" data-scroll-target="gazette"><span>03</span>газета</a>
+            <a href="#newcomer" class="quick-button" data-scroll-target="newcomer"><span>04</span>новичку</a>
           </div>
-        </div>
+        </aside>
       </section>
 
-      <section id="about" class="section city-section reveal" aria-labelledby="about-title">
-        <div class="section-heading">
-          <p class="eyebrow">атмосфера</p>
-          <h2 id="about-title">Париж не фон. Париж отвечает.</h2>
-          <p>Здесь нельзя просто появиться в центре событий и знать все сразу. Новости идут через газеты, слухи проходят по салонам, приказы выходят указами, а ошибки могут привести к суду.</p>
-        </div>
-        <div class="city-grid">
-          <article class="city-card palace">
-            <span>01</span>
-            <h3>Дворец</h3>
-            <p>Приемы, аудиенции, распоряжения и борьба за внимание власти.</p>
-          </article>
-          <article class="city-card court">
-            <span>02</span>
-            <h3>Суд и канцелярия</h3>
-            <p>Допросы, показания, бумаги, протоколы и решения по делу.</p>
-          </article>
-          <article class="city-card press">
-            <span>03</span>
-            <h3>Газета и слухи</h3>
-            <p>Печатные заметки, городские разговоры и репутация персонажей.</p>
-          </article>
-          <article class="city-card underground">
-            <span>04</span>
-            <h3>Подполье</h3>
-            <p>Темные сделки, тайные встречи, риск и последствия для тех, кто играет грязно.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="roles" class="section roles-section reveal" aria-labelledby="roles-title">
-        <div class="section-heading narrow">
-          <p class="eyebrow">стартовые пути</p>
-          <h2 id="roles-title">Роль выдается под анкету</h2>
-          <p>Можно просить направление, но финальная роль выбирается владельцем, чтобы город не ломался и каждому было место в сюжете.</p>
-        </div>
-        <div class="role-list" aria-label="категории ролей">
-          <span>двор</span>
-          <span>армия</span>
-          <span>суд</span>
-          <span>полиция</span>
-          <span>пресса</span>
-          <span>медицина</span>
-          <span>рынок</span>
-          <span>театр</span>
-          <span>подполье</span>
-          <span>улицы города</span>
-        </div>
-      </section>
-
-      <section id="rules" class="section rules-section reveal" aria-labelledby="rules-title">
-        <div class="rules-paper">
-          <div class="section-heading narrow">
-            <p class="eyebrow">правила города</p>
-            <h2 id="rules-title">Чтобы ролевая не развалилась</h2>
+      <section id="decrees" class="section paper-section reveal" aria-labelledby="decrees-title">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">императорские бумаги</p>
+            <h2 id="decrees-title">Указы и распоряжения</h2>
           </div>
-          <div class="rules-grid">
-            <article>
-              <h3>Без метагейма</h3>
-              <p>Персонаж знает только то, что видел, слышал или мог узнать логично.</p>
-            </article>
-            <article>
-              <h3>Без силы без причины</h3>
-              <p>Нельзя решать исход за другого игрока, ломать сцены или делать персонажа непобедимым.</p>
-            </article>
-            <article>
-              <h3>Без современности</h3>
-              <p>Сеттинг держится на 1808 годе. Никаких телефонов, мемных политиков, камер и будущих знаний.</p>
-            </article>
-            <article>
-              <h3>Локации важны</h3>
-              <p>Сначала уход из одной темы, потом появление в другой. Персонаж не может быть сразу в двух местах.</p>
-            </article>
+          <p>Короткая лента документов. Сюда можно быстро добавлять новые приказы, чтобы игроки не искали их по чату.</p>
+        </div>
+        <div class="doc-list" id="decree-list" aria-live="polite"></div>
+      </section>
+
+      <section id="registry" class="section registry-section reveal" aria-labelledby="registry-title">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">городской реестр</p>
+            <h2 id="registry-title">Принятые роли</h2>
           </div>
+          <p>В реестре указаны игрок, имя персонажа, место в городе и важные связи. Поиск работает по юзу, имени, роли и ведомству.</p>
+        </div>
+
+        <div class="registry-toolbar" aria-label="фильтр ролей">
+          <label class="field">
+            <span>поиск</span>
+            <input id="role-search" type="search" placeholder="юз, имя, роль..." autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>раздел</span>
+            <select id="role-filter">
+              <option value="all">все</option>
+              <option value="двор">двор</option>
+              <option value="суд">суд</option>
+              <option value="полиция">полиция</option>
+              <option value="армия">армия</option>
+              <option value="пресса">пресса</option>
+              <option value="медицина">медицина</option>
+              <option value="церковь">церковь</option>
+              <option value="город">город</option>
+              <option value="подполье">подполье</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="registry-count" id="role-count"></div>
+        <div class="role-table-wrap">
+          <table class="role-table">
+            <thead>
+              <tr>
+                <th>игрок</th>
+                <th>персонаж</th>
+                <th>роль</th>
+                <th>раздел</th>
+                <th>важное</th>
+              </tr>
+            </thead>
+            <tbody id="role-table-body"></tbody>
+          </table>
         </div>
       </section>
 
-      <section class="section bulletin-section reveal" aria-labelledby="bulletin-title">
-        <div class="bulletin-copy">
-          <p class="eyebrow">газета</p>
-          <h2 id="bulletin-title">Слухи двигают город</h2>
-          <p>Любой поступок может попасть в газету, стать темой разговора в салоне или поводом для визита жандармов. Игра идет не только в личных сценах, но и в общем городском поле.</p>
+      <section id="gazette" class="section gazette-section reveal" aria-labelledby="gazette-title">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">городская газета</p>
+            <h2 id="gazette-title">Газеты и слухи</h2>
+          </div>
+          <p>Здесь будут заметки по датам. Их можно фильтровать по типу: указ, слух, газета или дело.</p>
         </div>
-        <div class="bulletin-board" aria-label="городские заметки">
-          <p>новый указ может изменить порядок на улицах</p>
-          <p>репутация персонажа влияет на отношение города</p>
-          <p>суд требует доказательств, а не слухов</p>
+
+        <div class="gazette-toolbar" aria-label="фильтр газеты">
+          <button class="chip is-active" type="button" data-news-filter="all">все</button>
+          <button class="chip" type="button" data-news-filter="указ">указы</button>
+          <button class="chip" type="button" data-news-filter="газета">газета</button>
+          <button class="chip" type="button" data-news-filter="слух">слухи</button>
+          <button class="chip" type="button" data-news-filter="дело">дела</button>
+        </div>
+
+        <div class="news-list" id="news-list" aria-live="polite"></div>
+      </section>
+
+      <section id="newcomer" class="section newcomer-section reveal" aria-labelledby="newcomer-title">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">памятка</p>
+            <h2 id="newcomer-title">Новичку</h2>
+          </div>
+          <p>Коротко, чтобы человек не терялся после принятия и не ломал сцену в первые минуты.</p>
+        </div>
+        <div class="newcomer-grid">
+          <article>
+            <h3>Сначала прочитайте закреп</h3>
+            <p>В чате есть правила, темы и порядок перехода между локациями.</p>
+          </article>
+          <article>
+            <h3>Начинайте с места роли</h3>
+            <p>Солдат идет к гарнизону, писарь к суду, журналист к газете, дворцовые к дворцу.</p>
+          </article>
+          <article>
+            <h3>Не знайте лишнего</h3>
+            <p>Персонаж не знает слухи и тайны, пока не услышал их в сцене или газете.</p>
+          </article>
+          <article>
+            <h3>Переходы пишутся словами</h3>
+            <p>Сначала персонаж уходит из одной темы, потом появляется в другой.</p>
+          </article>
         </div>
       </section>
 
       <section id="join" class="section join-section reveal" aria-labelledby="join-title">
         <div class="join-card">
           <p class="eyebrow">вступление</p>
-          <h2 id="join-title">Готовы войти в Париж?</h2>
-          <p>Откройте анкету через Nyan Wallet, заполните персонажа и дождитесь решения владельца. После принятия вы получите роль и ссылку на чат события.</p>
+          <h2 id="join-title">Войти в Париж</h2>
+          <p>Анкета открывается через Nyan Wallet. После принятия игрок получает роль и ссылку на чат события.</p>
           <div class="hero-actions centered">
             <a class="button button-primary" href="https://t.me/nyancash_bot?startapp=paris" target="_blank" rel="noopener">Открыть анкету</a>
             <a class="button button-ghost" href="https://t.me/nyancash_bot" target="_blank" rel="noopener">Открыть бота</a>
@@ -155,7 +176,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>Le Nyan Paris · ролевая история экосистемы Nyan</p>
+      <p>Le Nyan Paris · городской лист 1808 года</p>
       <a href="#top">наверх</a>
     </footer>
   </div>
