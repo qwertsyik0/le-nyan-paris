@@ -9,19 +9,19 @@ const acceptedRoles = [
   { username: '@cladkayavata3_3', name: 'Миа Кане', role: 'судебный писарь', group: 'суд', note: 'протоколы, суд, бумаги' },
   { username: '@SalamSister', name: 'Louise Dupont', role: 'почтальон', group: 'город', note: 'письма и доставка' },
   { username: '@ewq1k', name: 'Лона Камия', role: 'помощник главного врача', group: 'медицина', note: 'больница и врачи' },
-  { username: '@bib_if', name: 'леви франце', role: 'уличный музыкант', group: 'город', note: 'улицы и площади' },
+  { username: '@bib_if', name: 'Леви Франце', role: 'уличный музыкант', group: 'город', note: 'улицы и площади' },
   { username: '@Ceniora_vanil', name: 'Айрис Вест', role: 'мелкий информатор', group: 'подполье', note: 'слухи, мелкие сведения' },
   { username: '@rosws', name: 'Реми Де Голль', role: 'уличный воришка', group: 'подполье', note: 'воровство и тайные связи' },
   { username: '@sofiyusheva', name: 'Долорес Салье', role: 'почтальон дворца', group: 'двор', note: 'дворцовые письма' },
   { username: '@floriannq', name: 'Жак Джонаш', role: 'барабанщик роты', group: 'армия', note: 'гарнизон и армия' },
-  { username: '@Ilovekapebebra', name: 'жан дюпон', role: 'посыльный суда', group: 'суд', note: 'поручения суда' },
-  { username: '@lloysh', name: 'лошш де анри', role: 'газетный переписчик', group: 'пресса', note: 'заметки без камер' },
+  { username: '@Ilovekapebebra', name: 'Жан Дюпон', role: 'посыльный суда', group: 'суд', note: 'поручения суда' },
+  { username: '@lloysh', name: 'Лошш Де Анри', role: 'газетный переписчик', group: 'пресса', note: 'заметки без камер' },
   { username: '@Lelelewonk', name: 'Риввира Лакировна', role: 'помощница газетного издателя', group: 'пресса', note: 'газета и редакция' },
   { username: '@tvorog_t', name: 'Аврора Дайан', role: 'придворная музыкантка', group: 'двор', note: 'театр, музыка, двор' },
   { username: '@k4r11_xD', name: 'Лина Дюран', role: 'художница-миниатюристка', group: 'город', note: 'портреты для медальонов' },
-  { username: '@LimeksVins', name: 'влад святой', role: 'приходской священник', group: 'церковь', note: 'принят с правом уточнения фамилии' },
+  { username: '@LimeksVins', name: 'Влад Святой', role: 'приходской священник', group: 'церковь', note: 'принят с правом уточнения фамилии' },
   { username: '@catminl1', name: 'Элис Шнайдер', role: 'мелкая воровка', group: 'подполье', note: 'стартовая роль в городском подполье' },
-  { username: '@l1messs7', name: 'павел ломоносов', role: 'рядовой солдат гарнизона', group: 'армия', note: 'принят с правом уточнения фамилии' }
+  { username: '@l1messs7', name: 'Павел Ломоносов', role: 'рядовой солдат гарнизона', group: 'армия', note: 'принят с правом уточнения фамилии' }
 ];
 
 const decrees = [
