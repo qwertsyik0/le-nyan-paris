@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Le Nyan Paris preview">
+  <defs>
+    <radialGradient id="r1" cx="18%" cy="10%" r="60%">
+      <stop offset="0" stop-color="#d8b35d" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#d8b35d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="r2" cx="88%" cy="20%" r="55%">
+      <stop offset="0" stop-color="#b55b72" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#b55b72" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#240b14"/>
+      <stop offset=".5" stop-color="#100609"/>
+      <stop offset="1" stop-color="#050304"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#r1)"/>
+  <rect width="1200" height="630" fill="url(#r2)"/>
+  <rect x="70" y="68" width="1060" height="494" rx="44" fill="none" stroke="#d8b35d" stroke-opacity=".36" stroke-width="3"/>
+  <circle cx="600" cy="145" r="46" fill="#641428" stroke="#f4d88d" stroke-width="5"/>
+  <text x="600" y="161" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="700" fill="#fff7e4">N</text>
+  <text x="600" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="116" font-weight="700" fill="#fff7e4" letter-spacing="-6">Le Nyan Paris</text>
+  <text x="600" y="370" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#f4d88d" letter-spacing="6">ПАРИЖ · 1808</text>
+  <text x="600" y="438" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#fffaf0" opacity=".82">дворец · суд · газета · полиция · подполье</text>
+</svg>
