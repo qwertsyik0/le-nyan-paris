@@ -2,7 +2,6 @@ const acceptedRoles = [
   { username: '@Qwertsyiks', name: 'Наполеон Бонапарт', role: 'Император', group: 'двор', note: 'власть и указы' },
   { username: '@NnKakoyToGlorpovich', name: 'Жак Дьюмонт', role: 'бармен в салуне «Золотой конь»', group: 'город', note: 'салун, городские разговоры' },
   { username: '@ad_15_03', name: 'Алисия Фрелицкая', role: 'комендант Имперской тюрьмы', group: 'полиция', note: 'тюрьма и порядок' },
-  { username: '@Grimmmme', name: 'Арчи Адамс', role: 'ремесленник', group: 'город', note: 'мастерская, город' },
   { username: '@CopiaCardinal', name: 'Корцо Вайнберг', role: 'священник', group: 'церковь', note: 'церковь, исповеди, связи' },
   { username: '@Leya_666', name: 'Лея Фимилова', role: 'санитар', group: 'медицина', note: 'лекарская помощь' },
   { username: '@PIXEL_ARE_YOU_OKAY', name: 'Лука Нортвест', role: 'младший жандарм', group: 'полиция', note: 'жандармерия, улицы' },
