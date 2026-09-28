@@ -1,4 +1,16 @@
 (function () {
+  function loadHardAdminFallback() {
+    try {
+      if (document.getElementById("hard-admin-fallback-script")) return;
+      const script = document.createElement("script");
+      script.id = "hard-admin-fallback-script";
+      script.src = "./hard_admin.js?v=20260928-hard-admin-2";
+      document.body.appendChild(script);
+    } catch (error) {
+      console.warn("hard admin fallback skipped", error);
+    }
+  }
+
   async function cleanupTestApplications() {
     try {
       if (!initData || sessionStorage.getItem("paris-test-cleanup-done")) return;
@@ -20,5 +32,7 @@
     }
   }
 
+  window.setTimeout(loadHardAdminFallback, 300);
+  window.setTimeout(loadHardAdminFallback, 1600);
   window.setTimeout(cleanupTestApplications, 1800);
 })();
