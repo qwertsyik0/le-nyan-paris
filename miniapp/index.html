@@ -21,6 +21,7 @@
       <button class="tab active" data-tab="home">главная</button>
       <button class="tab" data-tab="application">анкета</button>
       <button class="tab" data-tab="status">статус</button>
+      <button class="tab" data-tab="letters">письма</button>
       <button class="tab" data-tab="guide">правила</button>
       <button class="tab" data-tab="locations">локации</button>
       <button class="tab" data-tab="registry">реестр</button>
@@ -33,11 +34,11 @@
           <div>
             <p class="eyebrow">Париж, 27 сентября 1808</p>
             <h2>кабинет участника</h2>
-            <p>здесь можно подать анкету, посмотреть статус, открыть городской лист, быстро перейти в чат и свериться с правилами.</p>
+            <p>здесь можно подать анкету, посмотреть статус, получить письма из канцелярии, открыть городской лист и свериться с правилами.</p>
           </div>
           <div class="hero-actions">
             <button type="button" class="primary" data-open-tab="application">подать анкету</button>
-            <button type="button" class="ghost" data-open-link="chat">открыть чат</button>
+            <button type="button" class="ghost" data-open-tab="letters">мои письма</button>
           </div>
         </article>
 
@@ -48,10 +49,24 @@
             <p id="home-role">роль появится после принятия</p>
           </article>
           <article class="card compact">
+            <span class="label">письма</span>
+            <strong id="home-letters-count">0</strong>
+            <p>личные уведомления, повестки и поручения от администрации.</p>
+            <button type="button" class="small" data-open-tab="letters">открыть</button>
+          </article>
+        </section>
+
+        <section class="grid two">
+          <article class="card compact">
             <span class="label">городской лист</span>
             <strong>указы, роли, газета</strong>
             <p>публичная страница события с основными сведениями.</p>
             <button type="button" class="small" data-open-link="citySheet">открыть</button>
+          </article>
+          <article class="card compact">
+            <span class="label">после принятия</span>
+            <strong>ссылка придет отдельно</strong>
+            <p>доступ в чат выдается в сообщении после одобрения анкеты.</p>
           </article>
         </section>
 
@@ -60,7 +75,7 @@
           <div class="steps">
             <div><b>1</b><span>заполнить анкету персонажа</span></div>
             <div><b>2</b><span>дождаться решения администрации</span></div>
-            <div><b>3</b><span>получить роль и перейти в чат</span></div>
+            <div><b>3</b><span>получить роль и ссылку на чат</span></div>
             <div><b>4</b><span>начать игру в подходящей теме</span></div>
           </div>
         </section>
@@ -159,6 +174,20 @@
         </article>
       </section>
 
+      <section id="tab-letters" class="screen">
+        <article class="card">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">личная почта</p>
+              <h2>мои письма</h2>
+            </div>
+            <button id="refresh-letters" type="button" class="small">обновить</button>
+          </div>
+          <div id="letters-message" class="message">загрузка...</div>
+          <div id="letters-list" class="letter-list empty">пока писем нет</div>
+        </article>
+      </section>
+
       <section id="tab-guide" class="screen">
         <article class="card">
           <p class="eyebrow">основные правила</p>
@@ -174,8 +203,7 @@
 
         <article class="card">
           <h3>полезные ссылки</h3>
-          <div class="link-grid">
-            <button type="button" class="ghost" data-open-link="chat">чат события</button>
+          <div class="link-grid single">
             <button type="button" class="ghost" data-open-link="citySheet">городской лист</button>
           </div>
         </article>
@@ -244,6 +272,13 @@
         <article class="card">
           <h3>последние принятые</h3>
           <div id="admin-accepted-list" class="admin-list empty">загрузка...</div>
+        </article>
+
+        <article class="card">
+          <h3>отправка писем</h3>
+          <p>письма сейчас отправляются из бота командой:</p>
+          <p><code>/letter @username текст письма</code></p>
+          <p><code>/letter telegram_id текст письма</code></p>
         </article>
       </section>
     </main>
