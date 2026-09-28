@@ -1,5 +1,5 @@
 const loshEntry = acceptedRoles.find((item) => item.username === '@lloysh');
-if (loshEntry) loshEntry.name = 'Лош Де Анри';
+if (loshEntry) loshEntry.name = 'Лошш Де Анри';
 
 if (!acceptedRoles.some((item) => item.username === '@Communityr34')) {
   acceptedRoles.push({
