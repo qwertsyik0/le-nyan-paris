@@ -322,14 +322,16 @@ input:focus, textarea:focus, select:focus {
 }
 
 .letter-list,
-.admin-list {
+.admin-list,
+.admin-letter-list {
   display: grid;
   gap: 10px;
   color: var(--muted);
 }
 
 .letter-item,
-.admin-item {
+.admin-item,
+.admin-letter-item {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.48);
   border-radius: 18px;
@@ -344,7 +346,8 @@ input:focus, textarea:focus, select:focus {
 }
 
 .letter-top b,
-.admin-item b { color: var(--ink); }
+.admin-item b,
+.admin-letter-item b { color: var(--ink); }
 
 .letter-top span {
   color: var(--muted);
@@ -352,16 +355,44 @@ input:focus, textarea:focus, select:focus {
   white-space: nowrap;
 }
 
-.letter-item p {
+.letter-item p,
+.admin-letter-item p {
   white-space: pre-wrap;
   color: var(--muted);
+  margin-top: 8px;
+}
+
+.letter-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.letter-meta span:not(.pill) {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  padding: 7px 9px;
+  font-size: 12px;
+  font-weight: 750;
+  color: var(--muted);
+}
+
+.inline-field {
+  margin-top: 10px;
 }
 
 .admin-stats {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin-top: 14px;
+}
+
+@media (max-width: 640px) {
+  .admin-stats { grid-template-columns: 1fr; }
+  .letter-top { display: grid; }
 }
 
 .admin-stats div {
@@ -381,6 +412,7 @@ input:focus, textarea:focus, select:focus {
 
 .admin-item p { margin-top: 4px; }
 .admin-item code,
+.admin-letter-item code,
 .card code {
   background: rgba(143, 48, 38, 0.1);
   border-radius: 8px;
