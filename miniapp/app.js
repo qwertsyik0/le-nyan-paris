@@ -6,6 +6,14 @@ const links = {
   citySheet: "https://qwertsyik0.github.io/le-nyan-paris/",
 };
 
+const LETTER_STATUS_LABELS = {
+  new: "новое",
+  read: "прочитано",
+  in_work: "в работе",
+  closed: "закрыто",
+  hidden: "скрыто",
+};
+
 let currentUser = null;
 let currentApplication = null;
 let isAdmin = false;
@@ -30,8 +38,13 @@ const refreshAdminButton = document.getElementById("refresh-admin");
 const adminMessage = document.getElementById("admin-message");
 const adminPendingCount = document.getElementById("admin-pending-count");
 const adminAcceptedCount = document.getElementById("admin-accepted-count");
+const adminLettersCount = document.getElementById("admin-letters-count");
 const adminPendingList = document.getElementById("admin-pending-list");
 const adminAcceptedList = document.getElementById("admin-accepted-list");
+const adminLettersMessage = document.getElementById("admin-letters-message");
+const adminLettersList = document.getElementById("admin-letters-list");
+const adminLetterFilter = document.getElementById("admin-letter-filter");
+const refreshAdminLettersButton = document.getElementById("refresh-admin-letters");
 
 tg?.ready();
 tg?.expand();
@@ -46,6 +59,7 @@ function escapeHtml(value) {
 }
 
 function setPill(element, text, type = "muted") {
+  if (!element) return;
   element.textContent = text;
   element.className = `pill ${type}`.trim();
 }
@@ -65,6 +79,11 @@ function setLettersMessage(text, type = "") {
   lettersMessage.className = `message ${type}`.trim();
 }
 
+function setAdminLettersMessage(text, type = "") {
+  adminLettersMessage.textContent = text || "";
+  adminLettersMessage.className = `message ${type}`.trim();
+}
+
 function statusLabel(status) {
   const labels = {
     pending: "на рассмотрении",
@@ -80,6 +99,19 @@ function statusType(status) {
   if (status === "needs_changes") return "warn";
   if (status === "rejected") return "bad";
   if (status === "pending") return "warn";
+  return "muted";
+}
+
+function letterStatusLabel(status) {
+  return LETTER_STATUS_LABELS[status] || status || "—";
+}
+
+function letterStatusType(status) {
+  if (status === "new") return "warn";
+  if (status === "read") return "ok";
+  if (status === "in_work") return "warn";
+  if (status === "closed") return "ok";
+  if (status === "hidden") return "bad";
   return "muted";
 }
 
@@ -101,7 +133,10 @@ function openTab(name) {
     screen.classList.toggle("active", screen.id === `tab-${name}`);
   });
   window.scrollTo({ top: 0, behavior: "smooth" });
-  if (name === "admin" && isAdmin) loadAdminOverview();
+  if (name === "admin" && isAdmin) {
+    loadAdminOverview();
+    loadAdminLetters();
+  }
   if (name === "letters") loadLetters();
 }
 
@@ -188,6 +223,7 @@ function renderLetters(rows = []) {
         <b>${escapeHtml(letter.title || "письмо из канцелярии")}</b>
         <span>${escapeHtml(formatDate(letter.created_at))}</span>
       </div>
+      <span class="pill ${letterStatusType(letter.status)}">${escapeHtml(letterStatusLabel(letter.status))}</span>
       <p>${escapeHtml(letter.body || "").replaceAll("\n", "<br>")}</p>
     </article>
   `).join("");
@@ -227,7 +263,10 @@ async function loadMe() {
     renderStatus(data.application);
     fillForm(data.application);
     loadLetters();
-    if (isAdmin) loadAdminOverview();
+    if (isAdmin) {
+      loadAdminOverview();
+      loadAdminLetters();
+    }
   } catch (error) {
     setPill(connectionPill, "ожидаем сервер", "warn");
     setFormMessage("сервер просыпается. подождите несколько секунд и откройте раздел еще раз.", "error");
@@ -272,6 +311,39 @@ function renderAdminList(element, rows, emptyText) {
   `).join("");
 }
 
+function renderAdminLetters(rows = []) {
+  if (!rows?.length) {
+    adminLettersList.className = "admin-letter-list empty";
+    adminLettersList.textContent = "писем с таким фильтром нет";
+    return;
+  }
+
+  adminLettersList.className = "admin-letter-list";
+  adminLettersList.innerHTML = rows.map((letter) => `
+    <article class="admin-letter-item" data-letter-id="${escapeHtml(letter.id)}">
+      <div class="letter-top">
+        <b>#${escapeHtml(letter.id)} — ${escapeHtml(letter.title || "письмо из канцелярии")}</b>
+        <span>${escapeHtml(formatDate(letter.created_at))}</span>
+      </div>
+      <div class="letter-meta">
+        <span>игрок: ${escapeHtml(letter.username || letter.telegram_id || "без username")}</span>
+        <span>персонаж: ${escapeHtml(letter.character_name || "—")}</span>
+        <span class="pill ${letterStatusType(letter.status)}">${escapeHtml(letterStatusLabel(letter.status))}</span>
+      </div>
+      <p>${escapeHtml(letter.body || "").replaceAll("\n", "<br>")}</p>
+      <label class="inline-field">
+        <span>сменить статус</span>
+        <select class="admin-letter-status" data-letter-id="${escapeHtml(letter.id)}">
+          ${Object.entries(LETTER_STATUS_LABELS).map(([value, label]) => `
+            <option value="${escapeHtml(value)}" ${letter.status === value ? "selected" : ""}>${escapeHtml(label)}</option>
+          `).join("")}
+        </select>
+      </label>
+      <p><code>/letterstatus ${escapeHtml(letter.id)} ${escapeHtml(letter.status || "new")}</code></p>
+    </article>
+  `).join("");
+}
+
 async function loadAdminOverview() {
   if (!isAdmin || !initData) return;
   setAdminMessage("обновляю...");
@@ -279,11 +351,43 @@ async function loadAdminOverview() {
     const data = await api("/api/admin/overview", { initData });
     adminPendingCount.textContent = String(data.pending_count ?? data.pending?.length ?? 0);
     adminAcceptedCount.textContent = String(data.accepted_count ?? data.accepted?.length ?? 0);
+    adminLettersCount.textContent = String(data.letters_count ?? data.letters?.length ?? 0);
     renderAdminList(adminPendingList, data.pending, "новых анкет нет");
     renderAdminList(adminAcceptedList, data.accepted, "принятых анкет пока нет");
+    if (data.letters) renderAdminLetters(data.letters);
     setAdminMessage("данные обновлены", "ok");
   } catch (error) {
     setAdminMessage("сервер просыпается или временно недоступен", "error");
+  }
+}
+
+async function loadAdminLetters() {
+  if (!isAdmin || !initData) return;
+  const status = adminLetterFilter?.value || "all";
+  setAdminLettersMessage("обновляю письма...");
+  try {
+    const data = await api("/api/admin/letters", { initData, status });
+    renderAdminLetters(data.letters || []);
+    adminLettersCount.textContent = String(data.letters?.length ?? 0);
+    setAdminLettersMessage(data.letters?.length ? "письма обновлены" : "писем с таким фильтром нет", data.letters?.length ? "ok" : "");
+  } catch (error) {
+    setAdminLettersMessage("сервер просыпается или временно недоступен", "error");
+  }
+}
+
+async function changeLetterStatus(letterId, status) {
+  if (!isAdmin || !initData || !letterId || !status) return;
+  setAdminLettersMessage(`меняю статус письма #${letterId}...`);
+  try {
+    await api("/api/admin/letters/status", {
+      initData,
+      letter_id: Number(letterId),
+      status,
+    });
+    setAdminLettersMessage(`статус письма #${letterId} обновлен`, "ok");
+    await loadAdminLetters();
+  } catch (error) {
+    setAdminLettersMessage(error.message || "не удалось изменить статус", "error");
   }
 }
 
@@ -324,10 +428,23 @@ document.querySelectorAll("[data-open-link]").forEach((button) => {
   button.addEventListener("click", () => openLink(button.dataset.openLink));
 });
 
-refreshAdminButton?.addEventListener("click", loadAdminOverview);
+refreshAdminButton?.addEventListener("click", () => {
+  loadAdminOverview();
+  loadAdminLetters();
+});
+
 refreshLettersButton?.addEventListener("click", () => {
   lettersLoaded = false;
   loadLetters();
+});
+
+refreshAdminLettersButton?.addEventListener("click", loadAdminLetters);
+adminLetterFilter?.addEventListener("change", loadAdminLetters);
+
+adminLettersList?.addEventListener("change", (event) => {
+  const target = event.target;
+  if (!target?.classList?.contains("admin-letter-status")) return;
+  changeLetterStatus(target.dataset.letterId, target.value);
 });
 
 loadMe();
