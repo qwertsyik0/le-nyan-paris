@@ -356,3 +356,7 @@ input:focus, textarea:focus, select:focus {
   color: var(--accent-dark);
 }
 .empty { color: var(--muted); }
+
+[data-open-link="chat"] {
+  display: none !important;
+}
