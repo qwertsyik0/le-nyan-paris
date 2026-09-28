@@ -135,6 +135,8 @@ p { margin: 0; color: var(--muted); line-height: 1.5; }
   gap: 10px;
 }
 
+.link-grid.single { grid-template-columns: 1fr; }
+
 .grid {
   display: grid;
   gap: 12px;
@@ -319,6 +321,42 @@ input:focus, textarea:focus, select:focus {
   font-weight: 780;
 }
 
+.letter-list,
+.admin-list {
+  display: grid;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.letter-item,
+.admin-item {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.48);
+  border-radius: 18px;
+  padding: 13px;
+}
+
+.letter-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.letter-top b,
+.admin-item b { color: var(--ink); }
+
+.letter-top span {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.letter-item p {
+  white-space: pre-wrap;
+  color: var(--muted);
+}
+
 .admin-stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -326,8 +364,7 @@ input:focus, textarea:focus, select:focus {
   margin-top: 14px;
 }
 
-.admin-stats div,
-.admin-item {
+.admin-stats div {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.48);
   border-radius: 18px;
@@ -342,21 +379,12 @@ input:focus, textarea:focus, select:focus {
 }
 .admin-stats b { font-size: 28px; }
 
-.admin-list {
-  display: grid;
-  gap: 10px;
-  color: var(--muted);
-}
-.admin-item b { color: var(--ink); }
 .admin-item p { margin-top: 4px; }
-.admin-item code {
+.admin-item code,
+.card code {
   background: rgba(143, 48, 38, 0.1);
   border-radius: 8px;
   padding: 2px 6px;
   color: var(--accent-dark);
 }
 .empty { color: var(--muted); }
-
-[data-open-link="chat"] {
-  display: none !important;
-}
