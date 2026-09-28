@@ -284,7 +284,7 @@
             <button id="refresh-admin-letters" type="button" class="small">обновить</button>
           </div>
 
-          <label class="inline-field">
+          <label>
             <span>фильтр статуса</span>
             <select id="admin-letter-filter">
               <option value="all">все</option>
@@ -301,17 +301,15 @@
         </article>
 
         <article class="card">
-          <h3>отправка писем</h3>
-          <p>письма отправляются из бота командой:</p>
+          <h3>быстрые команды</h3>
+          <p>письма теперь можно отправлять прямо из админки Mini App. Команды в боте оставлены как резервный способ.</p>
           <p><code>/letter @username текст письма</code></p>
-          <p><code>/letter telegram_id текст письма</code></p>
-          <p>статус можно менять в этой админке или командой:</p>
           <p><code>/letterstatus ID status</code></p>
         </article>
       </section>
     </main>
   </div>
 
-  <script src="./app.js"></script>
+  <script src="./app.js?v=20260928-letters-admin"></script>
 </body>
 </html>
