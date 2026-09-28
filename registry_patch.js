@@ -1,6 +1,14 @@
 const loshEntry = acceptedRoles.find((item) => item.username === '@lloysh');
 if (loshEntry) loshEntry.name = 'Лошш Де Анри';
 
+const deadLukaIndex = acceptedRoles.findIndex((item) => {
+  const username = String(item.username || '').toLowerCase();
+  const name = String(item.name || '').toLowerCase();
+  const role = String(item.role || '').toLowerCase();
+  return username === '@pixel_are_you_okay' && (name.includes('лука нортвест') || role.includes('жандарм'));
+});
+if (deadLukaIndex !== -1) acceptedRoles.splice(deadLukaIndex, 1);
+
 if (!acceptedRoles.some((item) => item.username === '@Communityr34')) {
   acceptedRoles.push({
     username: '@Communityr34',
