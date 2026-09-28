@@ -261,6 +261,7 @@
           <div class="admin-stats">
             <div><span>на рассмотрении</span><b id="admin-pending-count">—</b></div>
             <div><span>принятые</span><b id="admin-accepted-count">—</b></div>
+            <div><span>письма</span><b id="admin-letters-count">—</b></div>
           </div>
         </article>
 
@@ -275,10 +276,37 @@
         </article>
 
         <article class="card">
+          <div class="section-head">
+            <div>
+              <h3>управление письмами</h3>
+              <p>меняйте статус письма, чтобы вести архив и скрывать лишнее из кабинета игрока.</p>
+            </div>
+            <button id="refresh-admin-letters" type="button" class="small">обновить</button>
+          </div>
+
+          <label class="inline-field">
+            <span>фильтр статуса</span>
+            <select id="admin-letter-filter">
+              <option value="all">все</option>
+              <option value="new">новые</option>
+              <option value="read">прочитано</option>
+              <option value="in_work">в работе</option>
+              <option value="closed">закрыто</option>
+              <option value="hidden">скрыто</option>
+            </select>
+          </label>
+
+          <div id="admin-letters-message" class="message"></div>
+          <div id="admin-letters-list" class="admin-letter-list empty">загрузка...</div>
+        </article>
+
+        <article class="card">
           <h3>отправка писем</h3>
-          <p>письма сейчас отправляются из бота командой:</p>
+          <p>письма отправляются из бота командой:</p>
           <p><code>/letter @username текст письма</code></p>
           <p><code>/letter telegram_id текст письма</code></p>
+          <p>статус можно менять в этой админке или командой:</p>
+          <p><code>/letterstatus ID status</code></p>
         </article>
       </section>
     </main>
