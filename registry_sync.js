@@ -5,6 +5,13 @@
     return String(value || '').trim().toLowerCase().replace(/^@/, '');
   }
 
+  function isOldLukaRecord(role) {
+    const key = normalizeUsername(role?.username);
+    const name = String(role?.name || '').toLowerCase();
+    const job = String(role?.role || '').toLowerCase();
+    return key === 'pixel_are_you_okay' && (name.includes('лука нортвест') || job.includes('жандарм'));
+  }
+
   async function syncRegistryFromBot() {
     if (!Array.isArray(acceptedRoles) || typeof renderRoles !== 'function') return;
     try {
@@ -15,6 +22,7 @@
 
       const byUsername = new Map(acceptedRoles.map((item) => [normalizeUsername(item.username), item]));
       for (const role of data.roles) {
+        if (isOldLukaRecord(role)) continue;
         const key = normalizeUsername(role.username);
         if (!key || key === 'без username') continue;
         if (!byUsername.has(key)) {
