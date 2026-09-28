@@ -3,13 +3,13 @@ const tg = window.Telegram?.WebApp;
 const initData = tg?.initData || "";
 
 const links = {
-  chat: "https://t.me/+gB1sMZBd5Lo4YjQy",
   citySheet: "https://qwertsyik0.github.io/le-nyan-paris/",
 };
 
 let currentUser = null;
 let currentApplication = null;
 let isAdmin = false;
+let lettersLoaded = false;
 
 const form = document.getElementById("application-form");
 const submitButton = document.getElementById("submit-button");
@@ -18,9 +18,13 @@ const connectionPill = document.getElementById("connection-pill");
 const formStatus = document.getElementById("form-status");
 const homeStatus = document.getElementById("home-status");
 const homeRole = document.getElementById("home-role");
+const homeLettersCount = document.getElementById("home-letters-count");
 const statusText = document.getElementById("status-text");
 const statusDetails = document.getElementById("status-details");
 const statusComment = document.getElementById("status-comment");
+const lettersMessage = document.getElementById("letters-message");
+const lettersList = document.getElementById("letters-list");
+const refreshLettersButton = document.getElementById("refresh-letters");
 const adminTabButton = document.getElementById("admin-tab-button");
 const refreshAdminButton = document.getElementById("refresh-admin");
 const adminMessage = document.getElementById("admin-message");
@@ -54,6 +58,11 @@ function setFormMessage(text, type = "") {
 function setAdminMessage(text, type = "") {
   adminMessage.textContent = text || "";
   adminMessage.className = `message ${type}`.trim();
+}
+
+function setLettersMessage(text, type = "") {
+  lettersMessage.textContent = text || "";
+  lettersMessage.className = `message ${type}`.trim();
 }
 
 function statusLabel(status) {
@@ -93,15 +102,12 @@ function openTab(name) {
   });
   window.scrollTo({ top: 0, behavior: "smooth" });
   if (name === "admin" && isAdmin) loadAdminOverview();
+  if (name === "letters") loadLetters();
 }
 
 function openLink(name) {
   const url = links[name];
   if (!url) return;
-  if (url.startsWith("https://t.me/")) {
-    tg?.openTelegramLink?.(url);
-    return;
-  }
   tg?.openLink?.(url);
 }
 
@@ -143,7 +149,7 @@ function renderStatus(application) {
   const commentParts = [];
   if (application.owner_comment) commentParts.push(application.owner_comment);
   if (application.status === "pending") commentParts.push("анкета уже ушла администрации. дождитесь решения.");
-  if (application.status === "accepted") commentParts.push("вы приняты. переходите в чат события и начинайте игру с подходящей локации.");
+  if (application.status === "accepted") commentParts.push("вы приняты. ссылка на чат была отправлена отдельным сообщением после принятия.");
   if (application.status === "needs_changes") commentParts.push("откройте раздел анкеты, исправьте данные и отправьте заново.");
   if (application.status === "rejected") commentParts.push("анкета отклонена. при необходимости уточните причину у администрации.");
   statusComment.textContent = commentParts.filter(Boolean).join("\n\n");
@@ -152,6 +158,39 @@ function renderStatus(application) {
   if (application.status === "accepted") {
     setFormMessage("анкета уже принята. если нужно что-то изменить, напишите администрации.", "ok");
   }
+}
+
+function formatDate(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleString("ru-RU", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+function renderLetters(rows = []) {
+  homeLettersCount.textContent = String(rows.length);
+  if (!rows.length) {
+    lettersList.className = "letter-list empty";
+    lettersList.textContent = "пока писем нет";
+    return;
+  }
+
+  lettersList.className = "letter-list";
+  lettersList.innerHTML = rows.map((letter) => `
+    <article class="letter-item">
+      <div class="letter-top">
+        <b>${escapeHtml(letter.title || "письмо из канцелярии")}</b>
+        <span>${escapeHtml(formatDate(letter.created_at))}</span>
+      </div>
+      <p>${escapeHtml(letter.body || "").replaceAll("\n", "<br>")}</p>
+    </article>
+  `).join("");
 }
 
 async function api(path, payload) {
@@ -183,13 +222,30 @@ async function loadMe() {
 
     setPill(connectionPill, currentUser?.username ? `@${currentUser.username}` : `ID ${currentUser?.id}`, "ok");
     adminTabButton.classList.toggle("hidden", !isAdmin);
+    homeLettersCount.textContent = String(data.unread_letters ?? 0);
 
     renderStatus(data.application);
     fillForm(data.application);
+    loadLetters();
     if (isAdmin) loadAdminOverview();
   } catch (error) {
     setPill(connectionPill, "ожидаем сервер", "warn");
     setFormMessage("сервер просыпается. подождите несколько секунд и откройте раздел еще раз.", "error");
+    setLettersMessage("сервер просыпается. письма загрузятся позже.", "error");
+  }
+}
+
+async function loadLetters() {
+  if (!initData) return;
+  setLettersMessage("загружаю письма...");
+  try {
+    const data = await api("/api/letters", { initData });
+    renderLetters(data.letters || []);
+    homeLettersCount.textContent = String(data.letters?.length ?? 0);
+    setLettersMessage(data.letters?.length ? "письма загружены" : "пока писем нет", data.letters?.length ? "ok" : "");
+    lettersLoaded = true;
+  } catch (error) {
+    setLettersMessage("сервер просыпается или временно недоступен", "error");
   }
 }
 
@@ -269,5 +325,9 @@ document.querySelectorAll("[data-open-link]").forEach((button) => {
 });
 
 refreshAdminButton?.addEventListener("click", loadAdminOverview);
+refreshLettersButton?.addEventListener("click", () => {
+  lettersLoaded = false;
+  loadLetters();
+});
 
 loadMe();
