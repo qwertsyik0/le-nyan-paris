@@ -9,6 +9,14 @@ if (leyaEntry) {
   leyaEntry.note = 'надзор за больницами, лекарями, санитарами и больничными припасами';
 }
 
+const lonaEntry = acceptedRoles.find((item) => item.username === '@ewq1k');
+if (lonaEntry) {
+  lonaEntry.name = 'Лона Камия';
+  lonaEntry.role = 'главная распорядительница военного ведомства Парижа';
+  lonaEntry.group = 'армия';
+  lonaEntry.note = 'воинский учет, призывные списки, повестки и порядок в военном комиссариате';
+}
+
 const deadLukaIndex = acceptedRoles.findIndex((item) => {
   const username = String(item.username || '').toLowerCase();
   const name = String(item.name || '').toLowerCase();
@@ -34,7 +42,7 @@ for (const link of document.querySelectorAll('a[href*="nyancash_bot"]')) {
 }
 
 const noticeDate = document.querySelector('.notice-date');
-if (noticeDate) noticeDate.textContent = 'канцелярия · 28 сентября 1808';
+if (noticeDate) noticeDate.textContent = 'канцелярия · 29 сентября 1808';
 
 function addUniqueEntry(list, entry) {
   if (!Array.isArray(list)) return;
@@ -72,6 +80,11 @@ const extraDecrees = [
 ];
 
 const latestDecrees = [
+  {
+    date: '29 сентября 1808',
+    title: 'О назначении Лоны Камии',
+    text: 'Лона Камия возвышается до должности главной распорядительницы военного ведомства Парижа. Ей поручается надзор за воинским учетом, призывными списками, повестками, распределением новобранцев и порядком в военном комиссариате.'
+  },
   {
     date: '28 сентября 1808',
     title: 'О назначении Леи Фимиловой',
@@ -134,6 +147,18 @@ const extraNews = [
 ];
 
 const latestNews = [
+  {
+    date: '29 сентября 1808',
+    type: 'указ',
+    title: 'Лона Камия назначена главной распорядительницей военного ведомства',
+    text: 'По распоряжению императора Лона Камия возвышена до должности главной распорядительницы военного ведомства Парижа. Теперь ей поручены воинский учет, призывные списки, повестки, распределение новобранцев и порядок в военном комиссариате.'
+  },
+  {
+    date: '29 сентября 1808',
+    type: 'слух',
+    title: 'В военном ведомстве новая рука',
+    text: 'После назначения Лоны Камии в военной канцелярии ждут строгого учета. Говорят, списки призывников, повестки и задержанные уклонисты теперь будут проходить через ее надзор.'
+  },
   {
     date: '28 сентября 1808',
     type: 'указ',
