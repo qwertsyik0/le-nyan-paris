@@ -7,6 +7,7 @@
   }
 
   function showRestricted(text = message) {
+    window.__accessRestricted = true;
     document.title = "Доступ ограничен";
     document.body.innerHTML = `
       <main style="min-height:100vh;display:grid;place-items:center;padding:24px;background:#160606;color:#fff;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
@@ -19,6 +20,7 @@
     `;
   }
 
+  window.__accessRestricted = false;
   window.__showRestrictedAccess = showRestricted;
 
   const tgUser = window.Telegram?.WebApp?.initDataUnsafe?.user;
