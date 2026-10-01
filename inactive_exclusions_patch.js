@@ -10,6 +10,7 @@
     "ilovekapebebra",
     "sofiysheva",
     "sofiyusheva",
+    "pixel_are_you_okay",
   ]);
 
   function clean(value) {
