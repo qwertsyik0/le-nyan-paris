@@ -78,36 +78,36 @@
         <div class="registry-toolbar" aria-label="фильтр ролей">
           <label class="field">
             <span>поиск</span>
-            <input id="role-search" type="search" placeholder="юз, имя, роль..." autocomplete="off" />
+            <input id="role-search" type="search" placeholder="имя, роль, @username" />
           </label>
           <label class="field">
             <span>раздел</span>
             <select id="role-filter">
               <option value="all">все</option>
               <option value="двор">двор</option>
+              <option value="город">город</option>
               <option value="суд">суд</option>
               <option value="полиция">полиция</option>
               <option value="армия">армия</option>
               <option value="пресса">пресса</option>
               <option value="медицина">медицина</option>
               <option value="церковь">церковь</option>
-              <option value="город">город</option>
               <option value="подполье">подполье</option>
               <option value="рынок">рынок</option>
             </select>
           </label>
+          <span id="role-count" class="counter">записей: 0</span>
         </div>
 
-        <div class="registry-count" id="role-count"></div>
-        <div class="role-table-wrap">
-          <table class="role-table">
+        <div class="table-wrap" role="region" aria-label="таблица принятых ролей" tabindex="0">
+          <table>
             <thead>
               <tr>
                 <th>игрок</th>
                 <th>персонаж</th>
                 <th>роль</th>
                 <th>раздел</th>
-                <th>важное</th>
+                <th>заметка</th>
               </tr>
             </thead>
             <tbody id="role-table-body"></tbody>
@@ -115,38 +115,38 @@
         </div>
       </section>
 
-      <section id="gazette" class="section gazette-section reveal" aria-labelledby="gazette-title">
+      <section id="gazette" class="section reveal" aria-labelledby="gazette-title">
         <div class="section-heading split-heading">
           <div>
             <p class="eyebrow">городская газета</p>
-            <h2 id="gazette-title">Газеты и слухи</h2>
+            <h2 id="gazette-title">Газета и слухи</h2>
           </div>
-          <p>Здесь будут заметки по датам. Их можно фильтровать по типу: указ, объявление, слух, газета или дело.</p>
+          <div class="filter-buttons" aria-label="фильтр газеты">
+            <button type="button" class="is-active" data-news-filter="all">все</button>
+            <button type="button" data-news-filter="указ">указы</button>
+            <button type="button" data-news-filter="газета">газета</button>
+            <button type="button" data-news-filter="слух">слухи</button>
+          </div>
         </div>
-
-        <div class="gazette-toolbar" aria-label="фильтр газеты">
-          <button class="chip is-active" type="button" data-news-filter="all">все</button>
-          <button class="chip" type="button" data-news-filter="указ">указы</button>
-          <button class="chip" type="button" data-news-filter="объявление">объявления</button>
-          <button class="chip" type="button" data-news-filter="газета">газета</button>
-          <button class="chip" type="button" data-news-filter="слух">слухи</button>
-          <button class="chip" type="button" data-news-filter="дело">дела</button>
-        </div>
-
-        <div class="news-list" id="news-list" aria-live="polite"></div>
+        <div class="news-grid" id="news-list" aria-live="polite"></div>
       </section>
 
       <section id="newcomer" class="section newcomer-section reveal" aria-labelledby="newcomer-title">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow">памятка</p>
-            <h2 id="newcomer-title">Новичку</h2>
-          </div>
-          <p>Коротко, чтобы человек не терялся после принятия и не ломал сцену в первые минуты.</p>
+        <div class="section-heading">
+          <p class="eyebrow">памятка игроку</p>
+          <h2 id="newcomer-title">Как войти в игру</h2>
         </div>
         <div class="newcomer-grid">
           <article>
-            <h3>Сначала прочитайте закреп</h3>
+            <h3>Подайте анкету через бота</h3>
+            <p>Мини-приложение открывается из Telegram и передает вашу анкету администрации.</p>
+          </article>
+          <article>
+            <h3>Дождитесь решения</h3>
+            <p>После принятия бот отправит уведомление, роль и ссылку на чат.</p>
+          </article>
+          <article>
+            <h3>Сверьтесь с локациями</h3>
             <p>В чате есть правила, темы и порядок перехода между локациями.</p>
           </article>
           <article>
@@ -188,5 +188,6 @@
   <script src="./registry_sync.js?v=20260928-2"></script>
   <script src="./name_patch.js?v=20260929-3"></script>
   <script src="./marriage_patch.js?v=20260929-1"></script>
+  <script src="./inactive_exclusions_patch.js?v=20261001-1"></script>
 </body>
 </html>
