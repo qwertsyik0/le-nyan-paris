@@ -10,16 +10,16 @@
       if (window.__accessRestricted) return;
 
       const admin = document.createElement("script");
-      admin.src = "./admin_ext.js?v=20260928-admin-workflow-2";
+      admin.src = "./admin_ext.js?v=20261003-tabs-fix-2";
       admin.onload = () => {
         if (window.__accessRestricted) return;
 
         const hardAdmin = document.createElement("script");
-        hardAdmin.src = "./hard_admin.js?v=20260928-hard-admin-2";
+        hardAdmin.src = "./hard_admin.js?v=20261003-tabs-fix-2";
         document.body.appendChild(hardAdmin);
 
         const warnings = document.createElement("script");
-        warnings.src = "./warnings.js?v=20260928-warnings-group-2";
+        warnings.src = "./warnings.js?v=20261003-tabs-fix-2";
         document.body.appendChild(warnings);
       };
       document.body.appendChild(admin);
