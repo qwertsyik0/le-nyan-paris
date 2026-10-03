@@ -260,7 +260,7 @@
       </section>
 
       <section id="tab-admin" class="screen">
-        <article class="card">
+        <article class="card" data-admin-pane="overview">
           <div class="section-head">
             <div>
               <p class="eyebrow">доступ владельца</p>
@@ -276,17 +276,17 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-admin-pane="applications">
           <h3>новые анкеты</h3>
           <div id="admin-pending-list" class="admin-list empty">загрузка...</div>
         </article>
 
-        <article class="card">
+        <article class="card" data-admin-pane="applications">
           <h3>последние принятые</h3>
           <div id="admin-accepted-list" class="admin-list empty">загрузка...</div>
         </article>
 
-        <article class="card">
+        <article class="card" data-admin-pane="letters">
           <div class="section-head">
             <div>
               <h3>управление письмами</h3>
@@ -311,7 +311,7 @@
           <div id="admin-letters-list" class="admin-letter-list empty">загрузка...</div>
         </article>
 
-        <article class="card">
+        <article class="card" data-admin-pane="letters">
           <h3>быстрые команды</h3>
           <p>письма теперь можно отправлять прямо из админки Mini App. Команды в боте оставлены как резервный способ.</p>
           <p><code>/letter @username текст письма</code></p>
