@@ -95,7 +95,7 @@
     const admin = document.getElementById("tab-admin");
     if (!admin || document.getElementById("hard-admin-panels")) return;
     admin.insertAdjacentHTML("beforeend", `
-      <article id="hard-admin-panels" class="card hard-panel">
+      <article id="hard-admin-panels" class="card hard-panel" data-admin-pane="letters">
         <p class="eyebrow">прямое управление</p>
         <h2>рассылка по разделам</h2>
         <div class="hard-row">
@@ -108,7 +108,7 @@
         <div id="hard-group-message" class="message"></div>
       </article>
 
-      <article id="hard-warning-admin-card" class="card hard-panel hard-warning-card">
+      <article id="hard-warning-admin-card" class="card hard-panel hard-warning-card" data-admin-pane="warnings">
         <p class="eyebrow">дисциплина</p>
         <h2>предупреждения игрокам</h2>
         <div class="hard-row">
