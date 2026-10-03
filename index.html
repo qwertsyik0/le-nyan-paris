@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Le Nyan Paris</title>
-  <meta name="description" content="Le Nyan Paris — городская страница события: указы, роли, газета, правила и вход в Париж 1808 года." />
-  <meta name="theme-color" content="#ead9ad" />
-  <meta property="og:title" content="Le Nyan Paris" />
-  <meta property="og:description" content="Париж 1808 года: указы, роли, городская газета, правила и вход через @LeNyanParisBot." />
+  <title>L’Empire des Ombres</title>
+  <meta name="description" content="L’Empire des Ombres — темный Париж 1808 года: указы, роли, городская газета, слухи, суд, дворец и тени империи." />
+  <meta name="theme-color" content="#09080b" />
+  <meta property="og:title" content="L’Empire des Ombres" />
+  <meta property="og:description" content="Париж 1808 года: империя, страх, дворцовые интриги, убийства, указы и городские слухи." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./assets/preview.svg" />
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="./styles.css?v=20260927-1" />
+  <link rel="stylesheet" href="./styles.css?v=20261003-empire-1" />
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header" aria-label="верхняя навигация">
-      <a class="brand" href="#top" aria-label="Le Nyan Paris">
-        <span class="brand-mark">N</span>
-        <span class="brand-text">Le Nyan Paris</span>
+      <a class="brand" href="#top" aria-label="L’Empire des Ombres">
+        <span class="brand-mark">O</span>
+        <span class="brand-text">L’Empire des Ombres</span>
       </a>
       <nav class="nav" aria-label="разделы сайта">
         <a href="#decrees">указы</a>
-        <a href="#registry">роли</a>
+        <a href="#registry">реестр</a>
         <a href="#gazette">газета</a>
         <a href="#newcomer">новичку</a>
         <a href="#join">вступить</a>
@@ -32,25 +32,25 @@
     <main id="top">
       <section class="hero section" aria-labelledby="hero-title">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Париж, 1808 год</p>
-          <h1 id="hero-title">Le Nyan Paris</h1>
-          <p class="hero-lead">Городская страница события: здесь лежат указы, список принятых ролей, газета, слухи и короткая памятка для тех, кто только входит в Париж.</p>
+          <p class="eyebrow">Париж, 1808 год · империя теней</p>
+          <h1 id="hero-title">L’Empire des Ombres</h1>
+          <p class="hero-lead">Темный городской лист Парижа: указы, роли, слухи, следы заговоров и заметки для тех, кто входит в город после заката.</p>
           <div class="hero-actions" aria-label="основные действия">
-            <a class="button button-primary" href="https://t.me/LeNyanParisBot?startapp=paris" target="_blank" rel="noopener">Вступить в Париж</a>
-            <a class="button button-ghost" href="#registry">Смотреть роли</a>
+            <a class="button button-primary" href="https://t.me/LeNyanParisBot?startapp=paris" target="_blank" rel="noopener">Войти в империю</a>
+            <a class="button button-ghost" href="#registry">Открыть реестр</a>
           </div>
         </div>
 
         <aside class="notice-board reveal" aria-label="главная доска">
           <div class="board-pin" aria-hidden="true"></div>
-          <p class="notice-date">канцелярия · 29 сентября 1808</p>
+          <p class="notice-date">канцелярия теней · 29 сентября 1808</p>
           <h2>городская доска</h2>
-          <p>Быстрые разделы для игроков и администрации. Эту доску можно обновлять: добавлять новые указы, выпуск газеты, роли и заметки для новичков.</p>
+          <p>Париж держится на приказах, страхе и слухах. Здесь собраны документы, роли, городские вести и вход в игру.</p>
           <div class="quick-actions" aria-label="быстрые кнопки">
             <a href="#decrees" class="quick-button" data-scroll-target="decrees"><span>01</span>указы</a>
-            <a href="#registry" class="quick-button" data-scroll-target="registry"><span>02</span>роли</a>
+            <a href="#registry" class="quick-button" data-scroll-target="registry"><span>02</span>реестр</a>
             <a href="#gazette" class="quick-button" data-scroll-target="gazette"><span>03</span>газета</a>
-            <a href="#newcomer" class="quick-button" data-scroll-target="newcomer"><span>04</span>новичку</a>
+            <a href="#newcomer" class="quick-button" data-scroll-target="newcomer"><span>04</span>вход в сюжет</a>
           </div>
         </aside>
       </section>
@@ -58,10 +58,10 @@
       <section id="decrees" class="section paper-section reveal" aria-labelledby="decrees-title">
         <div class="section-heading split-heading">
           <div>
-            <p class="eyebrow">императорские бумаги</p>
+            <p class="eyebrow">императорская канцелярия</p>
             <h2 id="decrees-title">Указы и распоряжения</h2>
           </div>
-          <p>Короткая лента документов. Сюда можно быстро добавлять новые приказы, чтобы игроки не искали их по чату.</p>
+          <p>Документы, которые меняют порядок в городе: комендантский час, проверки, назначения и решения двора.</p>
         </div>
         <div class="doc-list" id="decree-list" aria-live="polite"></div>
       </section>
@@ -69,10 +69,10 @@
       <section id="registry" class="section registry-section reveal" aria-labelledby="registry-title">
         <div class="section-heading split-heading">
           <div>
-            <p class="eyebrow">городской реестр</p>
+            <p class="eyebrow">реестр империи</p>
             <h2 id="registry-title">Принятые роли</h2>
           </div>
-          <p>В реестре указаны игрок, имя персонажа, место в городе и важные связи. Поиск работает по юзу, имени, роли и ведомству.</p>
+          <p>Игроки, персонажи, ведомства и связи. Поиск работает по юзу, имени, роли и разделу.</p>
         </div>
 
         <div class="registry-toolbar" aria-label="фильтр ролей">
@@ -118,8 +118,8 @@
       <section id="gazette" class="section reveal" aria-labelledby="gazette-title">
         <div class="section-heading split-heading">
           <div>
-            <p class="eyebrow">городская газета</p>
-            <h2 id="gazette-title">Газета и слухи</h2>
+            <p class="eyebrow">газета и шепот улиц</p>
+            <h2 id="gazette-title">Хроника теней</h2>
           </div>
           <div class="filter-buttons" aria-label="фильтр газеты">
             <button type="button" class="is-active" data-news-filter="all">все</button>
@@ -134,32 +134,32 @@
       <section id="newcomer" class="section newcomer-section reveal" aria-labelledby="newcomer-title">
         <div class="section-heading">
           <p class="eyebrow">памятка игроку</p>
-          <h2 id="newcomer-title">Как войти в игру</h2>
+          <h2 id="newcomer-title">Как войти в сюжет</h2>
         </div>
         <div class="newcomer-grid">
           <article>
-            <h3>Подайте анкету через бота</h3>
-            <p>Мини-приложение открывается из Telegram и передает вашу анкету администрации.</p>
+            <h3>Подайте анкету</h3>
+            <p>Кабинет открывается через Telegram-бота. После проверки персонаж попадает в реестр.</p>
           </article>
           <article>
-            <h3>Дождитесь решения</h3>
-            <p>После принятия бот отправит уведомление, роль и ссылку на чат.</p>
+            <h3>Начните с роли</h3>
+            <p>Солдат идет к ведомству, писарь к суду, врач к больнице, придворные ко дворцу.</p>
           </article>
           <article>
-            <h3>Сверьтесь с локациями</h3>
-            <p>В чате есть правила, темы и порядок перехода между локациями.</p>
-          </article>
-          <article>
-            <h3>Начинайте с места роли</h3>
-            <p>Солдат идет к гарнизону, писарь к суду, журналист к газете, дворцовые к дворцу.</p>
+            <h3>Смотрите указы</h3>
+            <p>Комендантский час, проверки и распоряжения влияют на сцены в городе.</p>
           </article>
           <article>
             <h3>Не знайте лишнего</h3>
-            <p>Персонаж не знает слухи и тайны, пока не услышал их в сцене или газете.</p>
+            <p>Персонаж знает только то, что услышал в сцене, письме, газете или приказе.</p>
           </article>
           <article>
-            <h3>Переходы пишутся словами</h3>
-            <p>Сначала персонаж уходит из одной темы, потом появляется в другой.</p>
+            <h3>Просите вход</h3>
+            <p>Если не знаете, куда идти, администрация даст письмо, слух, поручение или сцену.</p>
+          </article>
+          <article>
+            <h3>Пишите движение</h3>
+            <p>Сначала персонаж уходит из одной локации, потом появляется в другой.</p>
           </article>
         </div>
       </section>
@@ -167,8 +167,8 @@
       <section id="join" class="section join-section reveal" aria-labelledby="join-title">
         <div class="join-card">
           <p class="eyebrow">вступление</p>
-          <h2 id="join-title">Войти в Париж</h2>
-          <p>Анкета открывается через бота Le Nyan Paris. После принятия игрок получает роль и ссылку на чат события.</p>
+          <h2 id="join-title">Войти в L’Empire des Ombres</h2>
+          <p>Анкета открывается через бота. После принятия игрок получает роль, ссылку на чат и место в городском реестре.</p>
           <div class="hero-actions centered">
             <a class="button button-primary" href="https://t.me/LeNyanParisBot?startapp=paris" target="_blank" rel="noopener">Открыть анкету</a>
             <a class="button button-ghost" href="https://t.me/LeNyanParisBot" target="_blank" rel="noopener">Открыть бота</a>
@@ -178,7 +178,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>Le Nyan Paris · городской лист 1808 года</p>
+      <p>L’Empire des Ombres · городской лист Парижа 1808 года</p>
       <a href="#top">наверх</a>
     </footer>
   </div>
