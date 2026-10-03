@@ -5,12 +5,12 @@
     'leya_666',
     'luka_vo1d',
     'communityr34',
-    'tvorog_t',
     'mimilset',
     'salamsister',
     'ilovekapebebra',
     'sofiysheva',
-    'sofiyusheva'
+    'sofiyusheva',
+    'pixel_are_you_okay'
   ]);
 
   function normalizeUsername(value) {
