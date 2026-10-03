@@ -92,24 +92,13 @@ p, h1, h2, h3 { margin-top: 0; }
   text-transform: uppercase;
 }
 
-.topbar .eyebrow { font-size: 0; }
-.topbar .eyebrow::after { content: "канцелярия теней"; font-size: 11px; }
-
 h1, h2 {
   color: var(--text) !important;
   font-family: Georgia, "Times New Roman", serif;
   line-height: .98;
   text-shadow: 0 12px 30px rgba(0,0,0,.45);
 }
-h1 {
-  margin: 0;
-  font-size: 0;
-  letter-spacing: -.04em;
-}
-h1::after {
-  content: "L’Empire des Ombres";
-  font-size: clamp(28px, 7.2vw, 48px);
-}
+h1 { margin: 0; font-size: clamp(28px, 7.2vw, 48px); letter-spacing: -.04em; }
 h2 { margin-bottom: 12px; font-size: clamp(27px, 6.8vw, 42px); }
 h3 { margin-bottom: 10px; color: var(--gold) !important; font-size: 21px; }
 p { color: var(--text2) !important; line-height: 1.55; }
@@ -200,17 +189,6 @@ small { color: var(--muted) !important; }
   gap: 18px;
   background: linear-gradient(135deg, rgba(20,13,20,.98), rgba(70,20,32,.72)) !important;
 }
-.hero .eyebrow { font-size: 0; }
-.hero .eyebrow::after { content: "Париж, 1808 · империя теней"; font-size: 11px; }
-.hero h2 { font-size: 0; }
-.hero h2::after { content: "кабинет участника"; font-size: clamp(27px, 6.8vw, 42px); }
-.hero p { font-size: 0; }
-.hero p::after {
-  content: "здесь можно подать анкету, проверить статус, получить письма канцелярии и войти в темный Париж L’Empire des Ombres.";
-  font-size: 16px;
-  color: var(--text2);
-}
-
 .grid { display: grid; gap: 14px; }
 .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
