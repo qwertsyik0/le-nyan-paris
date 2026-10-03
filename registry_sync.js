@@ -10,7 +10,8 @@
     'ilovekapebebra',
     'sofiysheva',
     'sofiyusheva',
-    'pixel_are_you_okay'
+    'pixel_are_you_okay',
+    'loli_rose3'
   ]);
 
   function normalizeUsername(value) {
