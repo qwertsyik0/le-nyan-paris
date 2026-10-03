@@ -1,6 +1,6 @@
 (() => {
   const guard = document.createElement("script");
-  guard.src = "./access_guard.js?v=20261001-restore-tvorog-1";
+  guard.src = "./access_guard.js?v=20261003-empire-3";
   guard.onload = () => {
     if (window.__accessRestricted) return;
 
