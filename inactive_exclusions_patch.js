@@ -17,9 +17,15 @@
   }
 
   function removeInactiveRoles() {
-    if (!Array.isArray(window.acceptedRoles)) return;
-    window.acceptedRoles = window.acceptedRoles.filter((role) => !excludedUsernames.has(clean(role.username)));
-    if (typeof window.renderRoles === "function") window.renderRoles();
+    if (typeof acceptedRoles === "undefined" || !Array.isArray(acceptedRoles)) return;
+
+    for (let index = acceptedRoles.length - 1; index >= 0; index -= 1) {
+      if (excludedUsernames.has(clean(acceptedRoles[index]?.username))) {
+        acceptedRoles.splice(index, 1);
+      }
+    }
+
+    if (typeof renderRoles === "function") renderRoles();
   }
 
   removeInactiveRoles();
