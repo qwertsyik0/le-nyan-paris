@@ -16,12 +16,12 @@
     inactive_excluded: {
       title: "Вы исключены",
       heading: "вы исключены",
-      message: "вы исключены из Le Nyan Paris за бездействие. доступ к Mini App, боту, анкетам, письмам и участию в проекте закрыт.",
+      message: "вы исключены из L’Empire des Ombres за бездействие. доступ к Mini App, боту, анкетам, письмам и участию в проекте закрыт.",
     },
     blocked: {
       title: "Доступ ограничен",
       heading: "вы заблокированы",
-      message: "доступ к Le Nyan Paris для вас ограничен.",
+      message: "доступ к L’Empire des Ombres для вас ограничен.",
     },
   };
 
