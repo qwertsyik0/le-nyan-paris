@@ -5,7 +5,7 @@
     if (window.__accessRestricted) return;
 
     const base = document.createElement("script");
-    base.src = "./app_base.js?v=20260928-hard-admin-2";
+    base.src = "./app_base.js?v=20261006-rules-1";
     base.onload = () => {
       if (window.__accessRestricted) return;
 
